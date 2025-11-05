@@ -1,0 +1,179 @@
+{
+  "version": "0.0.35",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "dist/extension/index.js",
+  "icon": "assets/icon.png",
+  "contributes": {
+    "commands": [
+      {
+        "command": "zast.login",
+        "title": "Login",
+        "icon": "$(account)"
+      },
+      {
+        "command": "zast.logout",
+        "title": "Logout",
+        "icon": "$(sign-out)"
+      },
+      {
+        "command": "zast.runSbomFullScan",
+        "title": "Run Scan (Force Refresh)",
+        "icon": "$(play)"
+      },
+      {
+        "command": "zast.showStartPage",
+        "title": "ZAST Express: Getting Started Guide",
+        "icon": "$(getting-started)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "zast.login",
+          "when": "view == home && !zast.isAuthenticated",
+          "group": "navigation",
+          "icon": "$(account)"
+        },
+        {
+          "command": "zast.logout",
+          "when": "view == home && zast.isAuthenticated",
+          "group": "navigation",
+          "icon": "$(sign-out)"
+        },
+        {
+          "command": "zast.runSbomFullScan",
+          "when": "view == sbom && zast.isAuthenticated",
+          "group": "navigation@3",
+          "icon": "$(refresh)"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Zast Express",
+      "properties": {
+        "project.isSelfHosted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether this is a self-hosted deployment (uses Zast Express auth when true, Clerk auth when false)"
+        }
+      }
+    },
+    "uriSchemes": [
+      {
+        "scheme": "cursor://zast-ai.zast-extension",
+        "title": "Zast Express OAuth Callback"
+      },
+      {
+        "scheme": "vscode://zast-ai.zast-extension",
+        "title": "Zast Express OAuth & Payment Callback"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "assess-explorer",
+          "title": "Zast Express",
+          "icon": "assets/zast-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "assess-explorer": [
+        {
+          "id": "home",
+          "name": "Home",
+          "type": "webview",
+          "when": "true"
+        },
+        {
+          "id": "sbom",
+          "name": "SBOM Security",
+          "type": "webview",
+          "when": "true"
+        },
+        {
+          "id": "project-tasks",
+          "name": "Workspace Tasks",
+          "type": "webview",
+          "when": "true"
+        },
+        {
+          "id": "tasks",
+          "name": "Recent Tasks",
+          "type": "webview",
+          "when": "true"
+        },
+        {
+          "id": "help",
+          "name": "Help & Feedback",
+          "type": "webview",
+          "when": "true"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "compile": "vite build",
+    "watch": "vite build --watch",
+    "lint": "eslint extension --ext ts",
+    "prepare:files:dev": "cross-env TARGET_REGION=region_dev node ./scripts/prepare-files.js",
+    "prepare:files:cn": "cross-env TARGET_REGION=region_cn node ./scripts/prepare-files.js",
+    "prepare:files:global": "cross-env TARGET_REGION=region_global node ./scripts/prepare-files.js",
+    "build:dev": "npm run prepare:files:dev && cross-env TARGET_REGION=region_dev vite build",
+    "build:cn": "npm run prepare:files:cn && cross-env TARGET_REGION=region_cn vite build",
+    "build:global": "npm run prepare:files:global && cross-env TARGET_REGION=region_global vite build",
+    "package:cn": "cross-env TARGET_REGION=region_cn npm run build:cn && vsce package",
+    "package:dev": "cross-env TARGET_REGION=region_dev npm run build:dev && vsce package",
+    "package:global": "cross-env TARGET_REGION=region_global npm run build:global && vsce package",
+    "publish:cn": "npm run package:cn && vsce publish",
+    "publish:global": "npm run package:global && vsce publish",
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tomjs/vscode-webview": "^2.0.2",
+    "@types/marked": "^5.0.2",
+    "@types/xml2js": "^0.4.14",
+    "@vscode/webview-ui-toolkit": "^1.4.0",
+    "archiver": "^7.0.1",
+    "form-data": "^4.0.0",
+    "ignore": "^7.0.5",
+    "jszip": "^3.10.1",
+    "marked": "^16.2.0",
+    "node-fetch": "^3.3.2",
+    "vue": "^3.5.17",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "@tomjs/tsconfig": "^2.0.0",
+    "@tomjs/vite-plugin-vscode": "^4.2.1",
+    "@types/archiver": "^6.0.2",
+    "@types/node": "^20.10.0",
+    "@types/node-fetch": "^2.6.4",
+    "@types/vscode": "^1.85.0",
+    "@types/vscode-webview": "^1.57.5",
+    "@typescript-eslint/eslint-plugin": "^6.13.1",
+    "@typescript-eslint/parser": "^6.13.1",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "@vscode/vsce": "^2.15.0",
+    "cross-env": "^7.0.3",
+    "esbuild": "^0.19.0",
+    "eslint": "^8.54.0",
+    "fs-extra": "^11.0.0",
+    "typescript": "^5.3.2",
+    "vue-tsc": "^3.0.1"
+  },
+  "name": "zast-extension",
+  "displayName": "Zast Express",
+  "description": "VSCode extension for Zast.ai security vulnerability assessment",
+  "publisher": "zast-ai",
+  "categories": [
+    "Security"
+  ]
+}

@@ -1,0 +1,49 @@
+# Source files (will be compiled)
+src/**
+tsconfig.json
+extension/**
+
+# Development files
+.git/**
+.gitignore
+.claude/**
+.cursorindexingignore
+.specstory/**
+docs/**
+scripts/**
+.cursor/**
+PACKAGING.md
+tsconfig.node.json
+vite.config.ts
+view-*.html
+
+
+# Node modules (dependencies are bundled)
+node_modules/**
+
+# Test files
+test/**
+*.test.js
+*.test.ts
+
+# Build artifacts (except the compiled extension)
+out/test/**
+bin/**
+
+# IDE files
+.vscode/**
+.idea/**
+.github/**
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment files
+.env
+.env.local
+.env.example
+
+# OS files
+.DS_Store
+Thumbs.db 

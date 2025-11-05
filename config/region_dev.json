@@ -1,0 +1,30 @@
+{
+  "package": {
+    "name": "example-extension",
+    "displayName": "Example Extension",
+    "description": "VSCode extension for Example security vulnerability assessment",
+    "publisher": "example-publisher",
+    "title": "Example Extension"
+  },
+  "apiBaseUrl": "https://api.example.com",
+  "selfHostedConfig": {
+    "oauthAuthUrl": "/oauth/authorize",
+    "oauthRefreshTokenUrl": "/biz/api/v1/auth/exchange-token"
+  },
+  "saasConfig": {
+    "clientId": "EXAMPLE_CLIENT_ID",
+    "clientSecret": "EXAMPLE_CLIENT_SECRET",
+    "authUrl": "https://auth.example.com/oauth/authorize",
+    "tokenUrl": "https://auth.example.com/oauth/token",
+    "userInfoUrl": "https://auth.example.com/oauth/userinfo",
+    "scopes": [
+      "openid",
+      "profile",
+      "email",
+      "public_metadata"
+    ]
+  },
+  "reportUrl": "https://github.com/example-org/example-extension/issues",
+  "helpUrl": "https://example.com/document/extension",
+  "supportEmail": "support@example.com"
+}

@@ -1,0 +1,37 @@
+{
+  "name": "{{name}}",
+  "displayName": "{{displayName}}",
+  "description": "{{description}}",
+  "publisher": "{{publisher}}",
+  "contributes": {
+    "configuration": {
+      "title": "{{title}}",
+      "properties": {
+        "project.isSelfHosted": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether this is a self-hosted deployment (uses {{title}} auth when true, Clerk auth when false)"
+        }
+      }
+    },
+    "uriSchemes": [
+      {
+        "scheme": "cursor://{{publisher}}.{{name}}",
+        "title": "{{title}} OAuth Callback"
+      },
+      {
+        "scheme": "vscode://zast-ai.zast-extension",
+        "title": "Zast Express OAuth & Payment Callback"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "assess-explorer",
+          "title": "{{title}}",
+          "icon": "assets/zast-icon.svg"
+        }
+      ]
+    }
+  }
+}
