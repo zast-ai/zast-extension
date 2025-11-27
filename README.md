@@ -70,7 +70,7 @@ For all assessment reports' archive, please visit [ZAST Reports Dashboard](https
 ## Supported Environments
 
 - **IDEs**: VS Code, Cursor
-- **Languages**: Java
+- **Languages**: Java, JavaScript. Support for more languages is coming soon. 
 - **Frameworks**: Web applications
 
 ## Security Feature
@@ -85,38 +85,47 @@ For all assessment reports' archive, please visit [ZAST Reports Dashboard](https
 ### FAQ
 
 **1. Is it necessary to upload source code?**
+
 Zast.ai does not mandate that the actual source code be uploaded. However, the availability of source code will improve the precision of the assessment result, e.g., the line numbers for each frame of the vulnerability call flows. Not uploading source code will not affect the assessment results, but it will impact the content of the assessment report - issues cannot be pinpointed to specific source code locations, and users cannot integrate with programming tools like Cursor.
 
 **2. How do I add more test accounts for different roles?**
+
 After selecting a role and verifying the login status for an account (indicated by the green "Add user session" button), click "Add Account" to open a new tab. In the new page, you can proceed to log in with different test accounts, select their respective roles and complete verification, thus adding test accounts with various roles.
 
 **3. How do I add more test accounts if they are using different login URLs？**
+
 Once your account is verified (you'll see the 'Add user session' button turn green), click "add account" to open a new tab. Feel free to use different login URLs for additional accounts.
 
 **4. How is vulnerability's severity determined?**
+
 At zast.ai, we use CVSS framework version 3.1 to communicate the characteristics and severity of vulnerabilities.
 A vulnerability's severity (critical, high, medium or low) is based on its CVSS score:
+
 ![Install Extension](https://raw.githubusercontent.com/zast-ai/blog/refs/heads/main/assets/img/extension/severity.png)
+
 The score is comprised of measurements of each of the following metrics:
-Attack Vector (AV)
-Attack Complexity (AC)
-Privileges Required (PR)
-User Interaction (UI)
-Scope (S)
-Confidentiality (C)
-Integrity (I)
-Availability (A)
+- Attack Vector (AV)
+- Attack Complexity (AC)
+- Privileges Required (PR)
+- User Interaction (UI)
+- Scope (S)
+- Confidentiality (C)
+- Integrity (I)
+- Availability (A)
+  
 CVSS scoring can also have complex severity scoring. As most sources do not have a corresponding CVSS score, the CVSS score usually only reflects NVD information, which may not align with the CVSS severity.
 
 **5. How long does the code assessment take?**
+
 The execution time of every assessment depends on the size and complexity of the project. A typical assessment completes within a few hours.
 
 **6. How do I assess apps that are written in other languages?**
+
 Currently, we support Java-based web applications and services. Many other languages support is under developed. Stay tuned for more updates in the coming months.
 
 ## Support
 
-- **Issues**: [GitHub Issues]
+- **Issues**: [GitHub Issues](https://github.com/zast-ai/zast-extension/issues)
 - **Email**: support@zast.com
 
 ## About ZAST Express
@@ -136,7 +145,7 @@ Unlike traditional security scanners that generate false positives, ZAST Express
 
 ## License
 
-[License Type] © 2025 ZAST Security
+[License Type](https://github.com/zast-ai/zast-extension?tab=Apache-2.0-1-ov-file#readme) © 2025 ZAST Security
 
 ---
 
