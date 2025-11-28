@@ -7,7 +7,7 @@ assignees: ''
 ---
 
 ### My ZAST Express Usage Case
-Share how you used the extension (e.g. Assessed a Java microservice project with ZAST Express, identified 5 high-risk vulnerabilities in 3 minutes and fixed them quickly; Reduced false positive handling time by 80% for our team):
+Share how I used the extension (e.g. Assessed a Java microservice project with ZAST Express, identified 5 high-risk vulnerabilities in 3 minutes and fixed them quickly; Reduced false positive handling time by 80% for our team):
 
 ### Key Steps I Took (Optional)
 Briefly list the core operations to help others replicate your experience:
